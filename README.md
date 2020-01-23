@@ -41,7 +41,7 @@ Federung uses [Cosmiconfig](https://github.com/davidtheclark/cosmiconfig). Add t
 
 In this example, the final output would look like this:
 
-<img src=".github/federung.png">
+<img src="https://github.com/railslove/federung/blob/master/.github/federung.png">
 
 Federung lets you enter a new version for every keyPath. If you don't want to set a version, press enter to skip it. Federung will also do its best to keep the types of your version numbers the same.
 
@@ -58,8 +58,8 @@ The configuration object takes one property, `versions`,  which takes an array o
     {
       //  The file you want to open. Currently, only JSON files are supported.
       "file": "app.json" // string.
-      
-      // Path to your property. If the property is deep in your JSON, use a "." to drill down. 
+
+      // Path to your property. If the property is deep in your JSON, use a "." to drill down.
       "keyPath": "keyPath.to.your.property" // string.
     }]
 }

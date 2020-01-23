@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Helps with bumps",
   "main": "dist/index.js",
+  "repository": "railslove/federung",
+  "homepage": "https://github.com/railslove/federung",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "prepublish": "npm run build",
