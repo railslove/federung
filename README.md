@@ -65,7 +65,7 @@ The configuration object takes one property, `versions`,  which takes an array o
 }
 ```
 
-Hint: We use [lodash.get](https://lodash.com/docs/4.17.4#get) to interpret the `keyPath`, so anthing that works with lodash.get will work here.
+Hint: We use [`lodash.get`](https://lodash.com/docs/4.17.4#get) to interpret the `keyPath`, so anything that works with `lodash.get` will work.
 
 ----
 
