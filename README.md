@@ -41,7 +41,7 @@ Federung uses [Cosmiconfig](https://github.com/davidtheclark/cosmiconfig). Add t
 
 In this example, the final output would look like this:
 
-<img src="https://github.com/railslove/federung/blob/master/.github/federung.png">
+<img src="https://raw.githubusercontent.com/railslove/federung/master/.github/federung.png">
 
 Federung lets you enter a new version for every keyPath. If you don't want to set a version, press enter to skip it. Federung will also do its best to keep the types of your version numbers the same.
 
