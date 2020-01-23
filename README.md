@@ -5,7 +5,7 @@ Federung is also the german word for suspension – because it helps with your b
 
 We use it for some build scripts where we may have to change some version numbers in some cases, but not every time. It can also help to just remind you to check if you incremented all the right numbers.
 
-(We use it in compination with Expo to remind us to first update our build versions before starting new iOS and Android builds. But you can use it for whatever you want!)
+(We use it in combination with Expo to remind us to first update our build versions before starting new iOS and Android builds. But you can use it for whatever you want!)
 
 
 ## Installation and Usage
