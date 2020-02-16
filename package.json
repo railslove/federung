@@ -25,20 +25,20 @@
   "license": "MIT",
   "dependencies": {
     "cosmiconfig": "^6.0.0",
-    "ink": "^2.6.0",
+    "ink": "^2.7.1",
     "ink-text-input": "^3.2.2",
     "lodash": "^4.17.15",
     "react": ">=16.8.0",
-    "runtypes": "^4.0.3",
+    "runtypes": "^4.1.0",
     "yn": "^4.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.9.0",
+    "@types/jest": "^25.1.2",
     "@types/lodash": "^4.14.149",
-    "@types/node": "^13.1.8",
+    "@types/node": "^13.7.1",
     "@types/react": ">=16.8.0",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.3.0",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
   },
   "prettier": {
