@@ -1,6 +1,6 @@
 {
   "name": "federung",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Helps with bumps",
   "main": "dist/index.js",
   "repository": "railslove/federung",
