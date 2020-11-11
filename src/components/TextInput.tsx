@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactElement } from 'react'
 import InkTextInput from 'ink-text-input'
-import { Box, Color } from 'ink'
+import { Box } from 'ink'
 
 const noop = () => {}
 

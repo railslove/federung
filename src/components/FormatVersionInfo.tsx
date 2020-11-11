@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { Color } from 'ink'
+import { Text } from 'ink'
 
 import {
   VersionPlaceWithCurrent,
-  VersionPlaceWithCurrentAndNext
+  VersionPlaceWithCurrentAndNext,
 } from '../lib/versionPlace'
 
 const FormatVersionInfo: FunctionComponent<
@@ -18,29 +18,29 @@ const FormatVersionInfo: FunctionComponent<
 > = function FormatVersionInfo({ version, pending }) {
   if (pending) {
     return (
-      <>
+      <Text>
         {version.file} ▸ {version.keyPath}, currently at{' '}
-        <Color green>{JSON.stringify(version.currentVersion)}</Color>
-      </>
+        <Text color="green">{JSON.stringify(version.currentVersion)}</Text>
+      </Text>
     )
   }
 
   if ('nextVersion' in version && version.nextVersion) {
     return (
-      <>
+      <Text>
         {version.file} ▸ {version.keyPath}, will change{'  '}
-        <Color yellow>{JSON.stringify(version.currentVersion)}</Color>
+        <Text color="yellow">{JSON.stringify(version.currentVersion)}</Text>
         {' ▸ '}
-        <Color green>{JSON.stringify(version.nextVersion)}</Color>
-      </>
+        <Text color="green">{JSON.stringify(version.nextVersion)}</Text>
+      </Text>
     )
   }
 
   return (
-    <>
+    <Text>
       {version.file} ▸ {version.keyPath}, will stay at{' '}
-      <Color gray>{JSON.stringify(version.currentVersion)}</Color>
-    </>
+      <Text color="gray">{JSON.stringify(version.currentVersion)}</Text>
+    </Text>
   )
 }
 

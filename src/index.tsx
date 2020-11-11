@@ -4,7 +4,7 @@ import fs from 'fs'
 import * as rt from 'runtypes'
 import { get } from 'lodash'
 import React, { useState, FunctionComponent } from 'react'
-import { render, Color, Box } from 'ink'
+import { render, Text, Box } from 'ink'
 import yn from 'yn'
 
 import TextInput from './components/TextInput'
@@ -13,22 +13,27 @@ import saveChanges from './lib/saveChanges'
 import loadConfig from './lib/loadConfig'
 import {
   VersionPlaceWithCurrent,
-  VersionPlaceWithCurrentAndNext
+  VersionPlaceWithCurrentAndNext,
 } from './lib/versionPlace'
 import preserveVersionFormat from './lib/preserveVersionFormat'
 
 const NumberOrString = rt.Union(rt.Number, rt.String)
 const config = loadConfig()
 
-const versions: VersionPlaceWithCurrent[] = config.versions.map(version => {
+const versions: VersionPlaceWithCurrent[] = config.versions.map((version) => {
   const parsedFile = JSON.parse(fs.readFileSync(version.file, 'utf-8'))
-
-  const currentVersion = NumberOrString.check(get(parsedFile, version.keyPath))
+  let currentVersion
+  try {
+    currentVersion = NumberOrString.check(get(parsedFile, version.keyPath))
+  } catch (error) {
+    console.error(`Error with ${version.file} ▸ ${version.keyPath}:`)
+    throw error
+  }
 
   return {
     file: version.file,
     keyPath: version.keyPath,
-    currentVersion
+    currentVersion,
   }
 })
 
@@ -47,15 +52,15 @@ const App: FunctionComponent<{
   const [input, setInput] = useState('')
   const [commitMessage, setCommitMessage] = useState('')
   const [isDone, setIsDone] = useState(false)
-  const [isOkay, setIsOkay] = useState()
-  const [inputError, setInputError] = useState()
+  const [isOkay, setIsOkay] = useState<boolean>(true)
+  const [inputError, setInputError] = useState<string | null>(null)
 
   const versions: Versions = {
     done: props.versions.slice(0, currentIndex).map((version, index) => ({
       ...version,
-      nextVersion: inputVersions[index]
+      nextVersion: inputVersions[index],
     })),
-    next: props.versions.slice(currentIndex)
+    next: props.versions.slice(currentIndex),
   }
 
   const current = versions.next[0]
@@ -100,7 +105,7 @@ const App: FunctionComponent<{
 
   return (
     <Box flexDirection="column">
-      {versions.done.map(version => (
+      {versions.done.map((version) => (
         <Box key={version.file + version.keyPath}>
           <FormatVersionInfo version={version} />
         </Box>
@@ -115,14 +120,15 @@ const App: FunctionComponent<{
         />
       )}
 
-      {inputError && <Color yellow>{inputError}</Color>}
+      {inputError && <Text color="yellow">{inputError}</Text>}
 
       {!current && !isDone && (
         <TextInput
           label={
-            <>
-              Is this okay? (<Color green>Y</Color>/<Color red>n</Color>)
-            </>
+            <Text>
+              Is this okay? (<Text color="green">Y</Text>/
+              <Text color="red">n</Text>)
+            </Text>
           }
           value={commitMessage}
           onChange={setCommitMessage}
@@ -133,9 +139,9 @@ const App: FunctionComponent<{
       {isDone && (
         <Box>
           {isOkay ? (
-            <Color green>Done 🚀</Color>
+            <Text color="green">Done 🚀</Text>
           ) : (
-            <Color red>Cancelled. No versions were changed.</Color>
+            <Text color="red">Cancelled. No versions were changed.</Text>
           )}
         </Box>
       )}
